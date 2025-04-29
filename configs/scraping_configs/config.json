@@ -1,0 +1,5 @@
+{
+    "base_url": "https://example.com",
+    "retry_attempts": 3,
+    "timeout": 10
+}

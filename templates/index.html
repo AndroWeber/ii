@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Взаимодействие с ИИ</title>
+</head>
+<body>
+    <h1>Взаимодействие с ИИ</h1>
+    <form id="ai-form">
+        <label for="user_input">Введите запрос:</label><br>
+        <input type="text" id="user_input" name="user_input" required><br>
+        <label for="target_ai">Целевая нейросеть:</label><br>
+        <input type="text" id="target_ai" name="target_ai" required><br><br>
+        <button type="submit">Отправить</button>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        const form = document.getElementById('ai-form');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const userInput = document.getElementById('user_input').value;
+            const targetAi = document.getElementById('target_ai').value;
+
+            const response = await fetch('/ai/interact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_input: userInput, target_ai: targetAi }),
+            });
+            const result = await response.json();
+            document.getElementById('response').innerText = JSON.stringify(result);
+        });
+    </script>
+</body>
+</html>

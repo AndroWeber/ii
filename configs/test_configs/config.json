@@ -1,0 +1,4 @@
+{
+    "test_environment": "staging",
+    "parallel_tests": true
+}
